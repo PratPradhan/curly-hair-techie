@@ -1,0 +1,20 @@
+<template>
+    <template if:true={results.length}>
+        <ul class="slds_has-dividers_around-space">
+            <template for:each={results} for:item="acc">
+                <li key={acc.Id} class="slds-box slds-m-bottom_small result_card" >
+                    <p class="slds-text-heading_small">
+                        <a  
+                        data-id={acc.Id}
+                        onclick={navigateToRecord}>
+                        {acc.Name}
+                        </a>
+                    </p>
+                    <p class="slds-text-body_small slds-text-color_weak">
+                        Industry: {acc.Industry} | Type: {acc.Type}
+                    </p>
+                </li>
+            </template>
+        </ul>
+    </template>
+</template>

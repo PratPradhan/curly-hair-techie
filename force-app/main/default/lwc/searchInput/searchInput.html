@@ -1,0 +1,19 @@
+
+<template>
+<lightning-input label ="Search Accounts" onchange ={handleChange}>
+
+</lightning-input>
+
+<template if:true={history}>
+    <ul class="slds-listbox">
+        <template for:each={history} for:item="item">
+            <li key={item}
+            data-value={item}
+            onclick ={handleHistoryClick}>
+            {item}
+            </li>
+        </template>
+    </ul>
+    
+</template>
+</template>

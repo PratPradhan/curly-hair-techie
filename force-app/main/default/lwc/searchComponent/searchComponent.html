@@ -1,0 +1,34 @@
+<template>
+    <lightning-card title="Account Search" icon-name="standard:Account">
+        <div class="slds-p-around_medium">
+
+            <!---search Input-->
+           <c-search-input history={history} onsearchchange={handleSearchChange}>
+                </c-search-input> 
+
+                <!---Filters-->
+                <div class="slds-m-top_small">
+                    <c-search-filters onfilterchange={handleFilterChange}>
+
+                    </c-search-filters> 
+                </div>
+
+                <!--Loading Spinner-->
+                <template if:true={isLoading}>
+                    <div class="slds-is-relative slds-m-top_medium">
+                        <lightning-spinner 
+                          alternative-text="Searching" 
+                          size="small"
+                          variant="base">
+                    </lightning-spinner>
+                    </div>
+                </template>
+
+                <!--Results-->
+                <div class="slds-m-top_medium">
+                    <c-search-results results={results}></c-search-results>
+                </div> 
+        </div>
+    </lightning-card>
+
+</template>

@@ -1,0 +1,69 @@
+<template>
+    <lightning-card title="country & State Selector" icon-name="standard:address">
+        <div class="slds-p-around_medium">
+
+            <!--error message-->
+            <template if:true={error}>
+                <div class="slds-m-bottom_medium">
+                    <lightning-formatted-text 
+                        value={error}
+                        class="slds-text-color_error">
+                    </lightning-formatted-text>
+                </div>
+            </template>
+
+            <!-- Loading spinner-->
+             <template if:true={isLoading}>
+                <div class="slds-align_absolute-center slds-m-vertical_medium">
+                    <lightning-spinner
+                        alternative-text="Loading Picklists..."
+                        size="small">
+                    </lightning-spinner>
+
+                </div>
+             </template>
+
+             <!--country picklist-->
+             <template if:false={isLoading}>
+                <div class="slds-form-element slds-m-bottom_medium">
+                    <label class="slds-form-element__label" for="country-select">
+                        <abbr class="slds-required" title="required">*</abbr>Country
+                    </label>
+                    <div class="slds-form-element__control">
+                        <lightning-combobox
+                        name="country"
+                        label=""
+                        value={selectedCountry}
+                        placeholder="Select Country"
+                        options={countryOptions}
+                        onchange={handleCountryChange}
+                        required
+                        disabled={isCountryDisabled}>
+                    </lightning-combobox>
+                    </div>
+                </div>
+
+                <!--State picklist - conditionally Rendered-->
+                <template if:true={showStatePicklist}>
+                    <div class="slds-form-element slds-m-bottom_medium">
+                        <label class="slds-form-element__label" for="state-select">
+                            <abbr class="slds-required"  title="required">*</abbr>State/Province
+                        </label>
+                        <div class="slds-form-element__control">
+                            <lightning-combobox
+                            name="state"
+                            label=""
+                            value={selectedState}
+                            placeholder="Select State"
+                            options={stateOptions}
+                            onchange={handleStateChange}
+                            required
+                            disabled={isStateDisabled}>
+                        </lightning-combobox>
+                        </div>
+                    </div>
+                </template>
+             </template>
+        </div>
+    </lightning-card>
+</template>
