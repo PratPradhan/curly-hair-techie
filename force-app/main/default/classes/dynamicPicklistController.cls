@@ -23,7 +23,7 @@ public with sharing class dynamicPicklistController {
         //fetch state code
         List<String> stateList =new List<String>();
                 for(String countryCode : countryList){
-            List<Schema.PicklistEntry> stateEntries = stateFieldDescribe.getPicklistValues();
+            List<Schema.PicklistEntry> stateEntries = stateFieldDescribe. ();
         
          for(Schema.picklistEntry state : stateEntries){
             if(state.isActive()){

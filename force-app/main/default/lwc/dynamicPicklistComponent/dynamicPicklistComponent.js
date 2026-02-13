@@ -43,4 +43,39 @@ wiredpicklists({error, data}){
         }
     }
 }
+
+handleCountryChange(event){
+    const previousCountry = this.selectedCountry;
+    this.selectedCountry =event.detail.value;
+
+    //reset state when country changes
+    if(previousCountry !== this.selectedCountry){
+        this.selectedState = '';
+        this.updateStateOptions();
+    }
+}
+
+handleStateChange(event){
+    this.selectedState = event.detail.value;
+}
+
+updateStateOptions(){
+    if(this.selectedCountry && this.allStatesData[this.selectedCountry]){
+        const states =this.allStatesData[this.selectedCountry];
+
+        if(states && states.length >0){
+            this.stateOptions = states.map(state =>({
+                label: state,
+                value: state
+            }));
+        }else{
+            this.stateOptions=[];
+
+        }
+        else{
+            this.stateOptions=[];
+        }
+    }
+
+}
 }
